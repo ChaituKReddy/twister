@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 //Filereader to read the file in array buffer form
 // const FileReader = require('filereader')
@@ -10,8 +10,19 @@ const Home = ({instance, account}) => {
 
     //State 
     const [array, setArray] = useState();
-    const [image, setImage] = useState('https://ipfs.io/ipfs/Qmdzkts52hr3x4fjfHibQFhEjNu82K5oALDy7HxybjnEZf');
+    const [image, setImage] = useState('');
 
+    //UseEffect
+
+    useEffect (()=> {
+        loadImage();
+    })
+
+
+    const loadImage = async() => {
+        const file = await instance.methods.hash().call();
+        setImage("https://ipfs.io/ipfs" + file);
+    }
     //Handlers
     const onSubmitHandler = async(e) => {
         e.preventDefault();
