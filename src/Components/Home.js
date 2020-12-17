@@ -10,19 +10,21 @@ const Home = ({instance, account}) => {
 
     //State 
     const [array, setArray] = useState();
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState('a');
 
-    //UseEffect
-
-    useEffect (()=> {
-        loadImage();
-    })
-
-
-    const loadImage = async() => {
-        const file = await instance.methods.hash().call();
-        setImage("https://ipfs.io/ipfs" + file);
+    const loadImage = async(e) => {
+        e.preventDefault();
+        const hash = await instance.methods.hash().call();
+        console.log(hash);
+        setImage("https://ipfs.io/ipfs/" + hash);
     }
+
+    // useEffect(()=> {
+    //     console.log("Mounted");
+    //     console.log(image);
+    //     loadImage();
+    // },[])
+
     //Handlers
     const onSubmitHandler = async(e) => {
         e.preventDefault();
@@ -33,6 +35,7 @@ const Home = ({instance, account}) => {
         const hash = await instance.methods.hash().call();
         console.log(hash);
         setImage("https://ipfs.io/ipfs/" + hash);
+        setArray();
     }
 
     const onFileSelectHandler = async(e) => {
@@ -58,6 +61,7 @@ const Home = ({instance, account}) => {
             <div className="form">
                 <form className="options">
                     <input type="file" onChange={onFileSelectHandler} />
+                    <button onClick = {loadImage}>Latest</button>
                     <input type="submit" onClick = {onSubmitHandler} />
                 </form>
             </div>
