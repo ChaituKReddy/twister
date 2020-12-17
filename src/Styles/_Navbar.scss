@@ -1,0 +1,14 @@
+.navbar {
+  width: 100%;
+  height: 6vh;
+  background: #15202b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.logo {
+  cursor: pointer;
+}

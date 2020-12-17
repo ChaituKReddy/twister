@@ -1,0 +1,26 @@
+.home {
+  //background: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+  height: 94vh;
+  justify-content: space-between;
+}
+
+.title {
+  padding: 1rem;
+}
+
+.form {
+  width: 50%;
+  padding: 1rem;
+  //background: blue;
+
+  .options {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    //background: red;
+  }
+}
